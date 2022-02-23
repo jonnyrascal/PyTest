@@ -1,7 +1,4 @@
-""""""
-
 import pytest
-
 
 from tests.constants.constants import AdminUser, JackUser
 from tests.application.application import API
@@ -21,11 +18,6 @@ def run_around_test(application):
     response = application.logout_user(user=AdminUser.user,
                                        token=application.token)
     print(response.json()['content'])
-
-
-def test():
-    assert True
-    print('hello')
 
 
 def test_reset_all(application):
@@ -51,7 +43,7 @@ def test_login(application):
 
 def test_login_negative(application):
     """Negative testing login as admin"""
-    response = application.login_user(user=AdminUser.user, password='123')
+    application.login_user(user=AdminUser.user, password='123')
     assert len(application.token) == 32
 
 
@@ -65,14 +57,14 @@ def test_change_password(application):
     """Testing of changing user password"""
     response = application.change_password(token=application.token,
                                            oldPassword='qwerty',
-                                           newPassword='qwerty2')
+                                           newPassword='123')
     assert response.json()['content']
 
-
     # login as admin with new password
-    response = application.login_user(user='admin', password='qwerty1')
+    response = application.login_user(user='admin', password='123')
     assert response.status_code == 200
-    # assert len(application.token) == 32
+    assert len(application.token) == 32
+    print(response.json()['content'])
 
 
 def test_user_jack(application):

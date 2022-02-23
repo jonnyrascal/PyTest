@@ -1,8 +1,9 @@
 """In this file are are constants for testing"""
 BASEURL = 'http://localhost:8080'
 
-
 """In this class are all endpoints for testing"""
+
+
 class Endpoints:
     resetToDefault = '/reset'
     login = '/login'
@@ -27,14 +28,16 @@ class Endpoints:
     get_all_items = '/items/'
     all_item_indexes = '/itemindexes'
 
+
 class AdminUser:
     """This is data we are using in a tests_login file"""
     user = 'admin'
     password = 'qwerty'
     adminRights = True
 
+
 class JackUser:
-    """This is data we are using in a tests_login file where user's name is Jack""
+    """This is data we are using in a tests file where user's name is Jack"""
     user = 'Jack'
     password = 'qwerty'
     adminRights = False
